@@ -1,0 +1,269 @@
+   <!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ORIX TOURS - حجز تذاكر الطيران الذكي</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: #f4f7f6;
+            color: #333;
+        }
+        header {
+            background: linear-gradient(135deg, #0b2545, #134074);
+            color: white;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        header h1 {
+            font-size: 28px;
+            letter-spacing: 2px;
+            color: #fff;
+        }
+        header h1 span {
+            color: #ee6c4d;
+        }
+        .hero {
+            background: linear-gradient(rgba(11, 37, 69, 0.7), rgba(19, 64, 116, 0.7)), url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            height: 350px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 0 20px;
+        }
+        .hero h2 {
+            font-size: 38px;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        .hero p {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+        .search-container {
+            max-width: 900px;
+            margin: -40px auto 40px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        .search-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        .form-group label {
+            font-size: 14px;
+            font-weight: bold;
+            color: #134074;
+            margin-bottom: 5px;
+        }
+        .form-group input, .form-group select {
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 15px;
+            outline: none;
+            transition: 0.3s;
+        }
+        .form-group input:focus, .form-group select:focus {
+            border-color: #ee6c4d;
+            box-shadow: 0 0 5px rgba(238, 108, 77, 0.3);
+        }
+        .search-btn {
+            background-color: #ee6c4d;
+            color: white;
+            border: none;
+            padding: 14px;
+            width: 100%;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .search-btn:hover {
+            background-color: #d9532d;
+        }
+        .results-container {
+            max-width: 900px;
+            margin: 0 auto 50px auto;
+            padding: 0 20px;
+        }
+        .flight-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border-right: 5px solid #134074;
+            transition: transform 0.2s;
+        }
+        .flight-card:hover {
+            transform: translateY(-3px);
+        }
+        .flight-info h4 {
+            color: #0b2545;
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+        .flight-info p {
+            color: #666;
+            font-size: 14px;
+        }
+        .flight-price {
+            text-align: left;
+        }
+        .flight-price span {
+            display: block;
+            font-size: 22px;
+            font-weight: bold;
+            color: #27ae60;
+            margin-bottom: 8px;
+        }
+        .book-btn {
+            background-color: #25d366;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: background 0.3s;
+        }
+        .book-btn:hover {
+            background-color: #1ebe5d;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #0b2545;
+            color: white;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>ORIX <span>TOURS</span></h1>
+        <p>نظام الحجز الذكي - وكالة السفر والسياحة</p>
+    </header>
+
+    <div class="hero">
+        <h2>اكتشف العالم مع ORIX TOURS</h2>
+        <p>احجز رحلتك القادمة بأفضل الأسعار وبكل سهولة ويسر</p>
+    </div>
+
+    <div class="search-container">
+        <div class="search-grid">
+            <div class="form-group">
+                <label>من مدينة:</label>
+                <select id="fromCity">
+                    <option value="دمشق (DAM)">دمشق (DAM)</option>
+                    <option value="بيروت (BEY)">بيروت (BEY)</option>
+                    <option value="دبي (DXB)">دبي (DXB)</option>
+                    <option value="الأسطنبول (IST)">إسطنبول (IST)</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>إلى مدينة:</label>
+                <select id="toCity">
+                    <option value="دبي (DXB)">دبي (DXB)</option>
+                    <option value="إسطنبول (IST)">إسطنبول (IST)</option>
+                    <option value="القاهرة (CAI)">القاهرة (CAI)</option>
+                    <option value="بيروت (BEY)">بيروت (BEY)</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>تاريخ السفر:</label>
+                <input type="date" id="travelDate">
+            </div>
+            <div class="form-group">
+                <label>الدرجة:</label>
+                <select id="classType">
+                    <option value="السياحية">الدرجة السياحية (Economy)</option>
+                    <option value="رجال الأعمال">رجال الأعمال (Business)</option>
+                </select>
+            </div>
+        </div>
+        <button class="search-btn" onclick="searchFlights()">بحث عن الرحلات المتاحة</button>
+    </div>
+
+    <div class="results-container" id="results">
+        <!-- ستظهر الرحلات هنا تلقائياً عند البحث -->
+    </div>
+
+    <footer>
+        جميع الحقوق محفوظة &copy; 2026 - ORIX TOURS[span_2](start_span)[span_2](end_span)
+    </footer>
+
+    <script>
+        function searchFlights() {
+            const from = document.getElementById('fromCity').value;
+            const to = document.getElementById('toCity').value;
+            const date = document.getElementById('travelDate').value || 'الغد';
+            const travelClass = document.getElementById('classType').value;
+            
+            const resultsDiv = document.getElementById('results');
+            
+            // بيانات تجريبية تحاكي أنظمة الحجز الحية (Amadeus Style)
+            const mockFlights = [
+                { airline: 'الخطوط الجوية الدولية', flightNo: 'OX-302', time: '08:00 ص - 11:30 ص', duration: '3 ساعات و 30 دقيقة', price: '$350', luggage: 'وزن 30 كغ + حقيبةيد' },
+                { airline: 'طيران العِز السريع', flightNo: 'OX-514', time: '02:15 م - 05:45 م', duration: '3 ساعات و 30 دقيقة', price: '$310', luggage: 'وزن 20 كغ' },
+                { airline: 'الأجنحة الملكية', flightNo: 'OX-889', time: '09:00 م - 12:30 ص', duration: '3 ساعات و 30 دقيقة', price: '$420', luggage: 'وزن 40 كغ (درجة ممتازة)' }
+            ];
+
+            let html = '<h3 style="margin-bottom: 15px; color: #0b2545;">الرحلات المتاحة للوجهة المطلوبة:</h3>';
+
+            mockFlights.forEach(flight => {
+                // تجهيز رسالة الواتساب التلقائية مع كافة التفاصيل
+                let message = `مرحباً ORIX TOURS، أرغب في حجز هذه الرحلة:\n\n✈️ الخطوط: ${flight.airline} (${flight.flightNo})\n📍 من: ${from}\n📍 إلى: ${to}\n📅 التاريخ: ${date}\n💺 الدرجة: ${travelClass}\n⏰ الوقت: ${flight.time}\n🧳 الأوزان: ${flight.luggage}\n💰 السعر: ${flight.price}\n\nيرجى تأكيد الحجز وإتمام الإجراءات.`;
+                let encodedMessage = encodeURIComponent(message);
+                // ضع رقم الواتساب الخاص بالوكالة هنا مكان الأصفار
+                let whatsappUrl = `https://wa.me/963900000000?text=${encodedMessage}`;
+
+                html += `
+                    <div class="flight-card">
+                        <div class="flight-info">
+                            <h4>${flight.airline} <span style="font-size: 14px; color: #ee6c4d;">(${flight.flightNo})</span></h4>
+                            <p>🕒 ${flight.time} | المدة: ${flight.duration}</p>
+                            <p style="margin-top: 5px; color: #555;">🧳 ${flight.luggage} | الدرجة: ${travelClass}</p>
+                        </div>
+                        <div class="flight-price">
+                            <span>${flight.price}</span>
+                            <a href="${whatsappUrl}" target="_blank" class="book-btn">احجز عبر الواتساب 📲</a>
+                        </div>
+                    </div>
+                `;
+            });
+
+            resultsDiv.innerHTML = html;
+        }
+    </script>
+</body>
+</html>
